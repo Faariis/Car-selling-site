@@ -2,12 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" co ntent="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projekat</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script src="./script.js"></script>
+    <!-- Traka za pretragu početak -->
+    <div class="traka_wrapper">
+        <label for="search">Pretraži Vozila</label>
+        <input type="search" id="search" data_search>
+    </div>
+    <!-- Traka za pretragu kraj -->
+    <!-- Kartice početak -->
+    <div class="auta_cards" data_auta_cards_container>
+        <template data_auta_template>
+            <div class="card">
+                <div class="header" data_header></div>
+                <div class="body" data_body></div>
+        </template>
+    </div>
+    <!-- Kartice kraj -->
+    <script src="script.js"></script>
 </body>
 </html>
