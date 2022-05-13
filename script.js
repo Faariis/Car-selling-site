@@ -1,43 +1,59 @@
-/* GET */
+const bazeUrl='https://ptf-web-dizajn-2022.azurewebsites.net '
+ 
+fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars')
+.then(res=>{if(!res.ok)throw 'greska';return res.json()})
+.then(data=>getCars(data))
+.catch(err=>console.log(err))
+ 
+const getCars=(data)=>{
+const rezult =document.getElementById('auto1');
+let work='';
+data.forEach(element => {
+    console.log(element.name)
+   
+    work+=`<div class="card" style="width: 18rem;margin:10px;" >
+    <img src=${element.imageUrl}
+    class="card-img-top" alt="..." style="height:150px">
+    <div class="card-body">
+      <p class="card-text">${element.name} </p>
+      <p class="card-text">${element.manufacturer} </p>
+    </div>
+  </div>`
+});
+  rezult.innerHTML=work;
+}
 
-const autaCardTemplate = document.querySelector("[data_auta_template]");
-const autaCardContainer = document.querySelector("[data_auta_cards_container]");
-const searchInput = document.querySelector("[data_search]");
 
-let users = [] //Čuva podatke u nizu (Prilikom unosa)
+const DodajAuto = () => {
+    const AddId = document.getElementById('add-id').value;
+    const AddName = document.getElementById('add-name').value;
+    const AddManufacturer = document.getElementById('add-manufacturer').value;
+    const AddImageUrl= document.getElementById('add-imageUrl').value;
+    const AddPrice = document.getElementById('add-price').value;
+    const AddYear = document.getElementById('add-year').value;
 
-
-searchInput.addEventListener("input", (e) => { //Sve što se unese u pretraživać bilježi se u konzoli
-    const value = e.target.value.toLowerCase(); //toLowerCase prebaci u mala slova ako npr. unese se veliko slovo
-    users.forEach(user => {
-        const isVisible = user.name.toLowerCase().includes(value) || user.manufacturer.toLowerCase().includes(value); //Ako bilo gdje u nazivu/proizvođaču ima slovo uneseno, vraća true
-        user.element.classList.toggle("hide", !isVisible); //Ako je vidljiv neće biti skriven
-    })
-})
-
-fetch("https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars")
-    .then(res => {
-        if (res.ok) { console.log("GET request uspješan! ")}
-        else (console.log("GET request neuspješan!"));
-        return res;
-    })
-    .then(res => res.json())
-    .then(data => {
-      users = data.map(user => {
-        const card = autaCardTemplate.content.cloneNode(true).children[0]; //Uzima sadžaj iz template-a
-        const header = card.querySelector("[data_header]");
-        const body = card.querySelector("[data_body]");
-        header.textContent = user.name;
-        body.textContent = user.manufacturer;
-        autaCardContainer.append(card);
-        return { name: user.name, manufacturer: user.manufacturer, element: card }
-    })
-})
     
+    fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars', {
+        method: 'POST',
+        headers: new Headers({'content-type': 'application/json'}),
+        body: JSON.stringify({
+            id: AddId,
+            name: AddName,
+            manufacturer: AddManufacturer,
+            imageUrl: AddImageUrl,
+            price: AddPrice,
+            year: AddYear
+        })
+    })
+    .then(res => {
+        console.log(res);
+    })
+}
+
 
 /* POST */
 
-fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars', {
+/*fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars', {
     method: "POST",
     headers: {
         "Content-type": "application/json" //Govori severu koji format podataka šaljemo
@@ -52,9 +68,9 @@ fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars', {
             "year": 2020
           }
     )      
-})
+})*/
     
- /*   
+/* 
 const postData = {
     "id": 7,
     "name": "Audi",
@@ -80,3 +96,45 @@ try {
 } catch (error) {
     console.log("Error: " + err);
 }*/
+
+/*
+
+const mojaForma=document.getElementById("myform");
+mojaForma.addEventListener("submit",(e)=>{
+    e.preventDefault();
+    console.log("Unos je submitovan!");
+    const prvo = document.getElementById("id").value;
+    const drugo = document.getElementById("name").value;
+    const trece = document.getElementById("manufacturer").value;
+    const cetvrto = document.getElementById("imageUrl").value;
+    const peto = document.getElementById("price").value;
+    const sesto = document.getElementById("year").value;
+
+console.log(prvo, drugo, trece, cetvrto, peto, sesto);
+fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars', {
+    method:'POST',
+    headers: {
+    'Content-Type': 'application/json'
+        },
+    body: JSON.stringify({
+     id: prvo,
+     name: drugo, 
+     manufacturer: trece,
+     imageUrl: cetvrto,
+     price: peto,
+     year: sesto
+         })
+         })
+         .then(res => {
+             if(!res.ok){
+                 throw 'ovo je error';
+            }
+             return res.json();
+     })
+         .then(data => console.log(data))
+         .catch(err => console.log(err))
+})
+
+*/
+
+//PUT
