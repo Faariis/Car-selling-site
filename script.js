@@ -1,28 +1,48 @@
+// GET METODA
+
 const bazeUrl='https://ptf-web-dizajn-2022.azurewebsites.net '
  
 fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars')
-.then(res=>{if(!res.ok)throw 'greska';return res.json()})
-.then(data=>getCars(data))
-.catch(err=>console.log(err))
+.then(res => {
+    if(!res.ok){
+        throw 'Ovo je error';
+   }
+   else (console.log("GET request uspješan!"));
+    return res.json();
+})
+.then(data => getCars(data))
+.catch(err => console.log(err))
+
+
+
+//.then(res=>{if(!res.ok)throw 'greska';return res.json()})
+//.then(data=>getCars(data))
+//.catch(err=>console.log(err))
  
-const getCars=(data)=>{
-const rezult =document.getElementById('auto1');
-let work='';
+const getCars = (data) => {
+const result = document.getElementById('auto1');
+let work = '';
 data.forEach(element => {
     console.log(element.name)
    
-    work+=`<div class="card" style="width: 18rem;margin:10px;" >
+    work += 
+    `<div class="card" style="width: 18rem;margin:10px;" >
     <img src=${element.imageUrl}
     class="card-img-top" alt="..." style="height:150px">
     <div class="card-body">
       <p class="card-text">${element.name} </p>
       <p class="card-text">${element.manufacturer} </p>
+      <button type="button" class="btn btn-danger" onclick="izbrisiAuto(${element.id})">Delete</button>
     </div>
   </div>`
 });
-  rezult.innerHTML=work;
+  result.innerHTML=work;
 }
 
+
+
+
+// POST METODA
 
 const DodajAuto = () => {
     const AddId = document.getElementById('add-id').value;
@@ -35,15 +55,32 @@ const DodajAuto = () => {
     
     fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars', {
         method: 'POST',
+        headers: 'accept: */*',
         headers: new Headers({'content-type': 'application/json'}),
         body: JSON.stringify({
-            id: AddId,
-            name: AddName,
-            manufacturer: AddManufacturer,
-            imageUrl: AddImageUrl,
-            price: AddPrice,
-            year: AddYear
+            "id": AddId,
+            "name": AddName,
+            "manufacturer": AddManufacturer,
+            "imageUrl": AddImageUrl,
+            "price": AddPrice,
+            "year": AddYear
         })
+    })
+    .then(res => {
+        if (res.ok) { console.log("POST request uspješan! ")}
+        else (console.log("POST request neuspješan!"));
+        return res;
+        })
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => console.log(err))
+}
+
+
+const izbrisiAuto = (id) => {
+    fetch(`https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars/{id}`, {
+        method: 'DELETE',
     })
     .then(res => {
         console.log(res);
