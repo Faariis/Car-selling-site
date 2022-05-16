@@ -1,6 +1,6 @@
 // GET METODA
 
-const bazeUrl='https://ptf-web-dizajn-2022.azurewebsites.net '
+const baseUrl = 'https://ptf-web-dizajn-2022.azurewebsites.net'
  
 fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars')
 .then(res => {
@@ -13,11 +13,6 @@ fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars')
 .then(data => getCars(data))
 .catch(err => console.log(err))
 
-
-
-//.then(res=>{if(!res.ok)throw 'greska';return res.json()})
-//.then(data=>getCars(data))
-//.catch(err=>console.log(err))
  
 const getCars = (data) => {
 const result = document.getElementById('auto1');
@@ -32,15 +27,73 @@ data.forEach(element => {
     <div class="card-body">
       <p class="card-text">${element.name} </p>
       <p class="card-text">${element.manufacturer} </p>
-      <button type="button" class="btn btn-danger" onclick="izbrisiAuto(${element.id})">Delete</button>
+      <button type="button" onclick="fillEditData(${element.id})" class="btn btn-third" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Promjeni</button>  
+      <button type="button" class="btn btn-danger" onclick="izbrisiAuto(${element.id})">Izbriši</button>
     </div>
   </div>`
 });
-  result.innerHTML=work;
+  result.innerHTML = work;
 }
 
 
+// PUT METODA
 
+const fillEditData = (AutoId) => {
+    const element = data.find(element => element.id === AutoId);
+    //const foodFormId = document.getElementById('food-id');
+    //const foodFormName = document.getElementById('food-name');
+    //const foodFormImage = document.getElementById('food-image');
+    //const foodFormPrice = document.getElementById('food-price');
+    const ChangeId = document.getElementById('change-id').value;
+    const ChangeName = document.getElementById('change-name').value;
+    const ChangeManufacturer = document.getElementById('change-manufacturer').value;
+    const ChangeImageUrl= document.getElementById('change-imageUrl').value;
+    const ChangePrice = document.getElementById('change-price').value;
+    const ChangeYear = document.getElementById('change-year').value;
+
+    ChangeId = element.id;
+    ChangeName = element.name;
+    ChangeManufacturer = element.manufacturer;
+    ChangeImageUrl = element.ImageUrl;
+    ChangePrice = element.price;
+    ChangeYear = element.year;
+    //foodFormId.value = food.id;
+    //foodFormName.value = food.name;
+    //foodFormImage.value = food.imageUrl;
+    //foodFormPrice.value = food.price;
+}
+
+const PromjeniAuto = () => { 
+    const ChangeId = document.getElementById('change-id').value;
+    const ChangeName = document.getElementById('change-name').value;
+    const ChangeManufacturer = document.getElementById('change-manufacturer').value;
+    const ChangeImageUrl= document.getElementById('change-imageUrl').value;
+    const ChangePrice = document.getElementById('change-price').value;
+    const ChangeYear = document.getElementById('change-year').value;
+    //const foodFormId = document.getElementById('food-id').value;
+    //const foodFormName = document.getElementById('food-name').value;
+    //const foodFormImage = document.getElementById('food-image').value;
+    //const foodFormPrice = document.getElementById('food-price').value;
+
+    fetch(`https://ptf-web-dizajn-2022.azurewebsites.net/swagger/index.html/api/Cars`, {
+        method: 'PUT', 
+        headers: new Headers({'content-type': 'application/json'}),
+        body: JSON.stringify({
+            "id": ChangeId,
+            "name": ChangeName,
+            "manufacturer": ChangeManufacturer,
+            "imageUrl": ChangeImageUrl,
+            "price": ChangePrice,
+            "year": ChangeYear
+        })
+    })
+    .then(res => {
+        if(!res.ok)
+        {
+            alert('Error');
+        }
+    })
+}
 
 // POST METODA
 
@@ -78,6 +131,8 @@ const DodajAuto = () => {
 }
 
 
+
+// DELETE METODA
 const izbrisiAuto = (id) => {
     fetch(`https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars/{id}`, {
         method: 'DELETE',
