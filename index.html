@@ -27,17 +27,17 @@
             <div class="modal-body">
               <form id="myform">
                 <div class="mb-3">
-                  <label for="todo-id" class="col-form-label">Id:</label>
+                  <label for="add-id" class="col-form-label">Id:</label>
                   <input type="number" class="form-control" id="add-id">
-                  <label for="todo-name" class="col-form-label">Name:</label>
+                  <label for="add-name" class="col-form-label">Name:</label>
                   <input type="text" class="form-control" id="add-name">
-                  <label for="todo-manufacturer" class="col-form-label">Manufacturer:</label>
+                  <label for="add-manufacturer" class="col-form-label">Manufacturer:</label>
                   <input type="text" class="form-control" id="add-manufacturer">
-                  <label for="todo-imageUrl" class="col-form-label">Url:</label>
+                  <label for="add-imageUrl" class="col-form-label">Url:</label>
                   <input type="text" class="form-control" id="add-imageUrl">
-                  <label for="todo-price" class="col-form-label">Price:</label>
+                  <label for="add-price" class="col-form-label">Price:</label>
                   <input type="number" class="form-control" id="add-price">
-                  <label for="todo-year" class="col-form-label">Year:</label>
+                  <label for="add-year" class="col-form-label">Year:</label>
                   <input type="number" class="form-control" id="add-year">
                 </div>
               </form>
@@ -50,53 +50,57 @@
         </div>
     </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="col-auto">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Dodaj auto</button>
+  </div>
+<!---------------------------------------------------------------------------------------------------------------------------------------------->
+  <div class="container w-150 h-150s">
+      <div class="row" id="auto1" ></div>
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Dodaj auto</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body1">
+            <div class="modal-body">
               <form id="myform1">
                 <div class="mb-3">
-                  <label for="todo-id" class="col-form-label">Id:</label>
-                  <input type="number" class="form-control" id="add-id">
+                  <label for="change-id" class="col-form-label">Id1:</label>
+                  <input type="number" class="form-control" id="change-id" disabled>
                 </div>
                 <div class="mb-3">
-                  <label for="todo-name" class="col-form-label">Name:</label>
-                  <input type="text" class="form-control" id="add-name">
+                  <label for="change-name" class="col-form-label">Name:</label>
+                  <input type="text" class="form-control" id="change-name">
                 </div>
                 <div class="mb-3">
-                  <label for="todo-manufacturer" class="col-form-label">Manufacturer:</label>
-                  <input type="text" class="form-control" id="add-manufacturer">
+                  <label for="change-manufacturer" class="col-form-label">Manufacturer:</label>
+                  <input type="text" class="form-control" id="change-manufacturer">
                 </div>
                 <div class="mb-3">
-                  <label for="todo-imageUrl" class="col-form-label">Url:</label>
-                  <input type="text" class="form-control" id="add-imageUrl">
+                  <label for="change-imageUrl" class="col-form-label">Url:</label>
+                  <input type="text" class="form-control" id="change-imageUrl">
                 </div>
                 <div class="mb-3">
-                  <label for="todo-price" class="col-form-label">Price:</label>
-                  <input type="number" class="form-control" id="add-price">
+                  <label for="change-price" class="col-form-label">Price:</label>
+                  <input type="number" class="form-control" id="change-price">
                 </div>
                 <div class="mb-3">
-                  <label for="todo-year" class="col-form-label">Year:</label>
-                  <input type="number" class="form-control" id="add-year">
+                  <label for="change-year" class="col-form-label">Year:</label>
+                  <input type="number" class="form-control" id="change-year">
                 </div>
               </form>
             </div>
-            <div class="modal-footer1">
+            <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onclick="DodajAuto()">Submit</button>
+              <button type="button" class="btn btn-third" onclick="PromjeniAuto()">Submit</button>
               
             </div>
           </div>
         </div>
     </div>
-    <div class="col-auto">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Dodaj auto</button>
-  </div>
-
+    
   <div class="container w-150 h-150s">
       <div class="row" id="auto1" ></div>
       
@@ -108,12 +112,5 @@
       crossorigin="anonymous"></script>
   </html>
  
-<!--<div class="drugi">
-        <input type="text" class="form-control" id="input"
-         placeholder="Search">
-         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-         data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">
-         Pretrazi vozila</button>
-    </div>-->
-    
+
     

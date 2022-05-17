@@ -1,7 +1,9 @@
 // GET METODA
 
 const baseUrl = 'https://ptf-web-dizajn-2022.azurewebsites.net'
- 
+
+let data = [];
+
 fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars')
 .then(res => {
     if(!res.ok){
@@ -10,14 +12,19 @@ fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars')
    else (console.log("GET request uspješan!"));
     return res.json();
 })
-.then(data => getCars(data))
+.then(data => {
+    usluga = data;
+    getCars(data);
+    console.log(data);
+  })
 .catch(err => console.log(err))
 
  
-const getCars = (data) => {
+const getCars = (usluga) => {
 const result = document.getElementById('auto1');
 let work = '';
-data.forEach(element => {
+
+usluga.forEach(element => {
     console.log(element.name)
    
     work += 
@@ -27,8 +34,10 @@ data.forEach(element => {
     <div class="card-body">
       <p class="card-text">${element.name} </p>
       <p class="card-text">${element.manufacturer} </p>
-      <button type="button" onclick="fillEditData(${element.id})" class="btn btn-third" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Promjeni</button>  
+    
+      <button type="button" onclick="fillEditData(${element.id})" class="btn btn-third" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@getbootstrap">Promjeni</button>  
       <button type="button" class="btn btn-danger" onclick="izbrisiAuto(${element.id})">Izbriši</button>
+     
     </div>
   </div>`
 });
@@ -39,28 +48,22 @@ data.forEach(element => {
 // PUT METODA
 
 const fillEditData = (AutoId) => {
-    const element = data.find(element => element.id === AutoId);
-    //const foodFormId = document.getElementById('food-id');
-    //const foodFormName = document.getElementById('food-name');
-    //const foodFormImage = document.getElementById('food-image');
-    //const foodFormPrice = document.getElementById('food-price');
-    const ChangeId = document.getElementById('change-id').value;
-    const ChangeName = document.getElementById('change-name').value;
-    const ChangeManufacturer = document.getElementById('change-manufacturer').value;
-    const ChangeImageUrl= document.getElementById('change-imageUrl').value;
-    const ChangePrice = document.getElementById('change-price').value;
-    const ChangeYear = document.getElementById('change-year').value;
+    const element = usluga.find(element => element.id === AutoId);
 
-    ChangeId = element.id;
-    ChangeName = element.name;
-    ChangeManufacturer = element.manufacturer;
-    ChangeImageUrl = element.ImageUrl;
-    ChangePrice = element.price;
-    ChangeYear = element.year;
-    //foodFormId.value = food.id;
-    //foodFormName.value = food.name;
-    //foodFormImage.value = food.imageUrl;
-    //foodFormPrice.value = food.price;
+    const ChangeId = document.getElementById('change-id');
+    const ChangeName = document.getElementById('change-name');
+    const ChangeManufacturer = document.getElementById('change-manufacturer');
+    const ChangeImageUrl= document.getElementById('change-imageUrl');
+    const ChangePrice = document.getElementById('change-price');
+    const ChangeYear = document.getElementById('change-year');
+
+    ChangeId.value = element.id;
+    ChangeName.value = element.name;
+    ChangeManufacturer.value = element.manufacturer;
+    ChangeImageUrl.value = element.imageUrl;
+    ChangePrice.value = element.price;
+    ChangeYear.value = element.year;
+    
 }
 
 const PromjeniAuto = () => { 
@@ -70,12 +73,8 @@ const PromjeniAuto = () => {
     const ChangeImageUrl= document.getElementById('change-imageUrl').value;
     const ChangePrice = document.getElementById('change-price').value;
     const ChangeYear = document.getElementById('change-year').value;
-    //const foodFormId = document.getElementById('food-id').value;
-    //const foodFormName = document.getElementById('food-name').value;
-    //const foodFormImage = document.getElementById('food-image').value;
-    //const foodFormPrice = document.getElementById('food-price').value;
 
-    fetch(`https://ptf-web-dizajn-2022.azurewebsites.net/swagger/index.html/api/Cars`, {
+    fetch(`https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars`, {
         method: 'PUT', 
         headers: new Headers({'content-type': 'application/json'}),
         body: JSON.stringify({
@@ -88,16 +87,24 @@ const PromjeniAuto = () => {
         })
     })
     .then(res => {
-        if(!res.ok)
-        {
-            alert('Error');
-        }
+        if (res.ok) { console.log("PUT request uspješan! ")}
+        else (console.log("PUT request neuspješan!"));
+        return res;
+        })
+    .then(res => {
+        console.log(res);
     })
+    .catch(err => console.log(err))
 }
+
 
 // POST METODA
 
 const DodajAuto = () => {
+ //   const myform=document.getElementById("btn");
+ //   myform.addEventListener("click",(e)=>{
+  //      e.preventDefault();
+    
     const AddId = document.getElementById('add-id').value;
     const AddName = document.getElementById('add-name').value;
     const AddManufacturer = document.getElementById('add-manufacturer').value;
@@ -128,21 +135,50 @@ const DodajAuto = () => {
         console.log(res);
     })
     .catch(err => console.log(err))
+
+    //})
+
+
+    //$('#exampleModal').on('hidden.bs.modal', function () {
+    //    $('.modal-body').find('textarea,input').val('');
+    //  });
+      
+    //  $('#exampleModal').modal('toggle');
 }
 
 
 
 // DELETE METODA
 const izbrisiAuto = (id) => {
-    fetch(`https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars/{id}`, {
+    fetch(`https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars/${id}`, {
         method: 'DELETE',
     })
     .then(res => {
+        if (res.ok) { console.log("DELETE request uspješan! ")}
+        else (console.log("DELETE request neuspješan!"));
+        return res;
+        })
+    .then(res => {
         console.log(res);
     })
+    .catch(err => console.log(err))
 }
 
-
+function myFunction() {
+    var dots = document.getElementById("dots");
+    var moreText = document.getElementById("more");
+    var btnText = document.getElementById("myBtn");
+  
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Read more";
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Read less";
+      moreText.style.display = "inline";
+    }
+  }
 /* POST */
 
 /*fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars', {

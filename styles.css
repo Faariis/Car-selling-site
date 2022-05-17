@@ -32,3 +32,5 @@ input {
 .hide {
     display: none;
 }
+
+#more {display: none;}
