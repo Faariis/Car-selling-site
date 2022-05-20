@@ -264,3 +264,26 @@ fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars', {
 */
 
 //PUT
+
+
+// POČETNA STRANICA
+
+
+// PROMJENA POLOŽAJA SLIKE 
+document.querySelector('.pocetna').onmousemove = (e) => {
+    document.querySelectorAll('.pocetna-parallax').forEach(ele =>{
+        let brzina = ele.getAttribute('data-speed');
+        let x = (window.innerWidth - e.pageX * brzina) / 90;
+        let y = (window.innerHeight - e.pageY * brzina) / 90;
+
+        ele.style.transform = `translateX(${y}px) translateY(${x}px)`;
+    });
+}
+
+// VRAĆANJE SLIKE 
+document.querySelector('.pocetna').onmouseleave = () => {
+    document.querySelectorAll('.pocetna-parallax').forEach(ele =>{
+
+        ele.style.transform = `translateX(0px) translateY(0px)`;
+    });
+}

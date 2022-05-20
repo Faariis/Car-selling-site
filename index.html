@@ -15,7 +15,7 @@
 <header class="header">
     <a href="#" class="logo"> <span>Auto</span>Prodaja</a>
     <nav class="navbar">
-      <a href="#pocetnaStrana">Početna</a>
+      <a href="#pocetna">Početna</a>
       <a href="#vozila">Vozila</a>
       <a href="#servisi">Servisi</a>
       <a href="#kontakt">Kontakti</a>
@@ -25,12 +25,51 @@
       <i class="far fa-user"></i>
     </div>
 </header>
-<!----------------------------------------------------------------------------------------------------------------->
+<!--POČETNA STRANA-->
+<section class="pocetna" id="pocetna">
+  	<h1 class="pocetna-parallax" data-speed="-2">Pronađi svoje auto</h1>
+    <img class="pocetna-parallax" data-speed="5" src="Slike/unnamed.png" alt="">
+</section>
+<!--IKONE-->
+<section class="ikone-container">
+    <div class="ikona">
+      <i class="fas fa-pocetna"></i>
+      <div class="sadrzaj">
+        <h3>200+</h3>
+        <p>grana</p>
+      </div>
+    </div>
+
+    <div class="ikona">
+      <i class="fas fa-auta"></i>
+      <div class="sadrzaj">
+        <h3>150+</h3>
+        <p>auta prodano</p>
+      </div>
+    </div>
+
+    <div class="ikona">
+      <i class="fas fa-korisnici"></i>
+      <div class="sadrzaj">
+        <h3>200+</h3>
+        <p>sretnih korisnika</p>
+      </div>
+    </div>
+
+    <div class="ikona">
+      <i class="fas fa-auta"></i>
+      <div class="sadrzaj">
+        <h3>4+</h3>
+        <p>novih automobila</p>
+      </div>
+    </div>
+</section>
+<!--VOZILA-->
     <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Dodaj auto</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Unesite podatke</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -58,11 +97,9 @@
           </div>
         </div>
     </div>
-
     <div class="col-auto">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal1" data-bs-whatever="@getbootstrap">Dodaj auto</button>
+      <button type="button" class="btn btn-fourth" data-bs-toggle="modal" data-bs-target="#Modal1" data-bs-whatever="@getbootstrap">Dodaj novo auto!</button>
   </div>
-
   <div class="container w-150 h-150s">
       <div class="row" id="auto1" ></div>
 <!---------------------------------------------------------------------------------------------------------------------------------------------->
@@ -109,11 +146,11 @@
           </div>
         </div>
     </div>
-    
   <div class="container w-150 h-150s">
       <div class="row" id="auto1" ></div>
-      
   </div>
+
+
   </body>
   <script src="./script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
