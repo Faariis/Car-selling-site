@@ -34,10 +34,10 @@ usluga.forEach(element => {
     <div class="card-body">
       <p class="card-text">${element.name} </p>
       <p class="card-text">${element.manufacturer} </p>
-    
-      <button type="button" onclick="fillEditData(${element.id})" class="btn btn-third" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-whatever="@getbootstrap">Promjeni</button>  
+      <p class="card-text">${element.price} </p>
+      <p class="card-text">${element.year} </p>  
+      <button type="button" onclick="fillEditData(${element.id})" class="btn btn-third" data-bs-toggle="modal" data-bs-target="#Modal2" data-bs-whatever="@getbootstrap">Promjeni</button>  
       <button type="button" class="btn btn-danger" onclick="izbrisiAuto(${element.id})">Izbriši</button>
-     
     </div>
   </div>`
 });
@@ -101,9 +101,9 @@ const PromjeniAuto = () => {
 // POST METODA
 
 const DodajAuto = () => {
- //   const myform=document.getElementById("btn");
- //   myform.addEventListener("click",(e)=>{
-  //      e.preventDefault();
+    /*const myform = document.getElementById("btn");
+    myform.addEventListener("click",(e)=>{
+    e.preventDefault();*/
     
     const AddId = document.getElementById('add-id').value;
     const AddName = document.getElementById('add-name').value;
@@ -115,7 +115,6 @@ const DodajAuto = () => {
     
     fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars', {
         method: 'POST',
-        headers: 'accept: */*',
         headers: new Headers({'content-type': 'application/json'}),
         body: JSON.stringify({
             "id": AddId,
@@ -136,19 +135,18 @@ const DodajAuto = () => {
     })
     .catch(err => console.log(err))
 
-    //})
+    
 
-
-    //$('#exampleModal').on('hidden.bs.modal', function () {
-    //    $('.modal-body').find('textarea,input').val('');
-    //  });
+    /*$('#Modal1').on('hidden.bs.modal', function () {
+    $('.modal-body').find('textarea, input').val('');
+      });
       
-    //  $('#exampleModal').modal('toggle');
+    $('#Modal1').modal('toggle');
+
+    })*/
 }
-
-
-
 // DELETE METODA
+
 const izbrisiAuto = (id) => {
     fetch(`https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars/${id}`, {
         method: 'DELETE',

@@ -11,13 +11,22 @@
 </head>
 
 <body>
-  <!-- Traka za pretragu -->
-  <div class="traka_wrapper">
-    <label for="search">Pretraži Vozila</label>
-    <input type="search" id="search" data_search>
-  </div>
-  <!----------------------------------------------------------------------------------------------------------------->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--ZAGLAVLJE-->
+<header class="header">
+    <a href="#" class="logo"> <span>Auto</span>Prodaja</a>
+    <nav class="navbar">
+      <a href="#pocetnaStrana">Početna</a>
+      <a href="#vozila">Vozila</a>
+      <a href="#servisi">Servisi</a>
+      <a href="#kontakt">Kontakti</a>
+    </nav>
+    <div class="login-btn">
+      <button class="btn">Prijava</button>
+      <i class="far fa-user"></i>
+    </div>
+</header>
+<!----------------------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -25,7 +34,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form id="myform">
+              <form id="myform1">
                 <div class="mb-3">
                   <label for="add-id" class="col-form-label">Id:</label>
                   <input type="number" class="form-control" id="add-id">
@@ -51,13 +60,13 @@
     </div>
 
     <div class="col-auto">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Dodaj auto</button>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal1" data-bs-whatever="@getbootstrap">Dodaj auto</button>
   </div>
-<!---------------------------------------------------------------------------------------------------------------------------------------------->
+
   <div class="container w-150 h-150s">
       <div class="row" id="auto1" ></div>
-
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!---------------------------------------------------------------------------------------------------------------------------------------------->
+<div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -65,7 +74,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form id="myform1">
+              <form id="myform2">
                 <div class="mb-3">
                   <label for="change-id" class="col-form-label">Id1:</label>
                   <input type="number" class="form-control" id="change-id" disabled>
