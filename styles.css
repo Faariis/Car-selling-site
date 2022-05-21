@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:ital,wght@0,100;0,300;0,400;0,500;1,600&display=swap');
 
+/* ZAGLAVLJE */
+
 *{
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -32,7 +34,7 @@ html {
 }
 
 .btn:hover {
-    background: white;
+    background: lightgray;
 }
 
 .header {
@@ -52,6 +54,7 @@ html {
     text-decoration: none;
     font-size: 2.5rem;
     color: black;
+    font-weight: 500;
 }
 
 .header .logo span {
@@ -81,7 +84,7 @@ html {
     display: none;
 }
 
-/*  POČETNA */
+/* POČETNA */
 
 section {
     padding: 0rem 9%;
@@ -104,7 +107,7 @@ section {
     margin: 1rem 0;
 }
 
-/* IKONE */
+/* IKONE (TEKST ISPOD PRVE SLIKE) */
 
 .ikone-container {
     padding-top: 4rem;
@@ -136,85 +139,157 @@ section {
     font-size: 1.5rem;
 }
 
-/* POST METODA */
+/* POST METODA (BUTTON)*/
 
-.btn-fourth {
+.btn-post {
     width: 100%;
+    border-radius: 0%;
     background-color: lightgray;
-    border-color: lightgray;
     color: red;
-    border-radius: 0;
+    margin-bottom: 30px;
 }
 
-.btn-fourth:hover {
+.btn-post:hover {
     width: 100%;
     background-color: red;
-    border-color: red;
     color: lightgray;
 }
 
-
-.traka_wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+.btn-close1 {
+    height: 50px;
+    width: 150px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 0%;
 }
 
-input {
-    font-size: 1rem;
+.btn-close1:hover {
+    background-color: lightgray;
+    color: black;
+    border: none;
 }
 
-.auta_cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /*Kartica 200 px široka*/
-    gap: .25rem;
-    margin-top: 1rem;
-    
+
+.btn-submit1 {
+    height: 50px;
+    width: 150px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 0%;
 }
+
+.btn-submit1:hover {
+    background-color: lightgray;
+    color: black;
+    border: none;
+}
+/* GET METODA (KARTICE) */
 
 .card {
-    background-color: gray;
-    border: 1px solid black;
-    padding: 0.5rem;
-}
-
-.card > .header {
-    margin-bottom: .25rem;
-}
-
-.card > .body {
+    width: 15rem;
+    margin: 10px;
     font-size: 0.9rem;
+    font-weight: 400;
 }
 
-.hide {
-    display: none;
+.card-img-top {
+    height: 120px;
 }
 
-#more {display: none;}
+/* PUT METODA (BUTTON) */
 
-
-
-
-/* media queries */
-@media (max-width: 991px) {
-
-    html {
-        font-size: 55%;
-    }
-
-    .header {
-        padding: 2rem;
-    }
-
+.btn-put {
+    height: 50px;
+    width: 150px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 0%;
 }
+
+.btn-put:hover {
+    background-color: lightgray;
+    color: black;
+    border: none;
+}
+
+.btn-close2 {
+    height: 50px;
+    width: 150px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 0%;
+}
+
+.btn-close2:hover {
+    background-color: lightgray;
+    color: black;
+    border: none;
+}
+
+.btn-submit2 {
+    height: 50px;
+    width: 150px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 0%;
+}
+
+.btn-submit2:hover {
+    background-color: lightgray;
+    color: black;
+    border: none;
+}
+
+/* DELETE METODA (BUTTON) */
+
+.btn-delete {
+    height: 50px;
+    width: 150px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 0%;
+}
+
+.btn-delete:hover {
+    background-color: lightgray;
+    color: black;
+    border: none;
+}
+
+/* FOOTER */
+.footer {
+    width: 100%;
+    height: 150px;
+    background-color: lightgray;
+}
+
+
+.footer .logo {
+    padding-top: 50px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 3rem;
+    color: black;
+    font-weight: 500;
+}
+
+.footer .logo span {
+    color: red;
+}
+
+/* RESPONSIVE DESIGN */
 
 @media (max-width: 768px) {
 
     .header #login-btn i {
         display: block;
     }
-
-
 
     .header .navbar {
         position: absolute;
@@ -230,10 +305,37 @@ input {
         margin: 2rem;
         font-size: 2rem;
     }
+
+    .card {
+        width: 46%;
+        margin: 10px;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    .card-img-top {
+        height: 140px;
+    }
+
 }
 
 @media (max-width: 450px) {
+
     html {
         font-size: 50%;
     }
+
+    .card {
+        width: 100%;
+        margin: 10px;
+        font-size: 2rem;
+        font-weight: 400;
+    }
+
+    .card-img-top {
+        height: 150px;
+    }
+
 }
+
+

@@ -28,16 +28,16 @@ usluga.forEach(element => {
     console.log(element.name)
    
     work += 
-    `<div class="card" style="width: 18rem;margin:10px;" >
+    `<div class="card">
     <img src=${element.imageUrl}
-    class="card-img-top" alt="..." style="height:150px">
+    class="card-img-top" alt="...">
     <div class="card-body">
-      <p class="card-text">${element.name} </p>
-      <p class="card-text">${element.manufacturer} </p>
-      <p class="card-text">${element.price} </p>
-      <p class="card-text">${element.year} </p>  
-      <button type="button" onclick="fillEditData(${element.id})" class="btn btn-third" data-bs-toggle="modal" data-bs-target="#Modal2" data-bs-whatever="@getbootstrap">Promjeni</button>  
-      <button type="button" class="btn btn-danger" onclick="izbrisiAuto(${element.id})">Izbriši</button>
+      <p class="card-model">Model: ${element.name} </p>
+      <p class="card-manufacturer">Proizvođač: ${element.manufacturer} </p>
+      <p class="card-price">Cijena: ${element.price} KM</p>
+      <p class="card-year">Godište: ${element.year} </p>  
+      <button type="button" onclick="fillEditData(${element.id})" class="btn btn-put" data-bs-toggle="modal" data-bs-target="#Modal2" data-bs-whatever="@getbootstrap">Promjeni</button>  
+      <button type="button" class="btn btn-delete" onclick="izbrisiAuto(${element.id})">Izbriši</button>
     </div>
   </div>`
 });
@@ -144,6 +144,7 @@ const DodajAuto = () => {
     $('#Modal1').modal('toggle');
 
     })*/
+    
 }
 // DELETE METODA
 

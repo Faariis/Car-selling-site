@@ -65,6 +65,7 @@
     </div>
 </section>
 <!--VOZILA-->
+<!--MODAL1-->
     <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -91,18 +92,19 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onclick="DodajAuto()">Submit</button>
+              <button type="button" class="btn btn-close1" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-submit1" id="btn" onclick="DodajAuto()">Submit</button>
             </div>
           </div>
         </div>
     </div>
     <div class="col-auto">
-      <button type="button" class="btn btn-fourth" data-bs-toggle="modal" data-bs-target="#Modal1" data-bs-whatever="@getbootstrap">Dodaj novo auto!</button>
+      <button type="button" class="btn btn-post" data-bs-toggle="modal" data-bs-target="#Modal1" data-bs-whatever="@getbootstrap">Dodaj novo auto!</button>
   </div>
   <div class="container w-150 h-150s">
       <div class="row" id="auto1" ></div>
 <!---------------------------------------------------------------------------------------------------------------------------------------------->
+<!--MODAL2-->
 <div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -113,7 +115,7 @@
             <div class="modal-body">
               <form id="myform2">
                 <div class="mb-3">
-                  <label for="change-id" class="col-form-label">Id1:</label>
+                  <label for="change-id" class="col-form-label">Id:</label>
                   <input type="number" class="form-control" id="change-id" disabled>
                 </div>
                 <div class="mb-3">
@@ -139,8 +141,8 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-third" onclick="PromjeniAuto()">Submit</button>
+              <button type="button" class="btn btn-close2" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-submit2" onclick="PromjeniAuto()">Submit</button>
               
             </div>
           </div>
@@ -149,7 +151,12 @@
   <div class="container w-150 h-150s">
       <div class="row" id="auto1" ></div>
   </div>
-
+  <!--FOOTER-->
+  <footer class="footer">
+      <div class="container1"></div>
+          <p href="#" class="logo"> <span>Auto</span>Prodaja</p>
+      </div>
+  </footer>
 
   </body>
   <script src="./script.js"></script>
