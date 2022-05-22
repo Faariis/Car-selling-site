@@ -36,7 +36,7 @@ usluga.forEach(element => {
       <p class="card-manufacturer">Proizvođač: ${element.manufacturer} </p>
       <p class="card-price">Cijena: ${element.price} KM</p>
       <p class="card-year">Godište: ${element.year} </p>  
-      <button type="button" onclick="fillEditData(${element.id})" class="btn btn-put" data-bs-toggle="modal" data-bs-target="#Modal2" data-bs-whatever="@getbootstrap">Promjeni</button>  
+      <button type="button" onclick="fillEditData(${element.id})" class="btn btn-put" data-bs-toggle="modal" data-bs-target="#Modal2" data-bs-whatever="@getbootstrap">Promijeni</button>  
       <button type="button" class="btn btn-delete" onclick="izbrisiAuto(${element.id})">Izbriši</button>
     </div>
   </div>`
@@ -135,17 +135,8 @@ const DodajAuto = () => {
     })
     .catch(err => console.log(err))
 
-    
-
-    /*$('#Modal1').on('hidden.bs.modal', function () {
-    $('.modal-body').find('textarea, input').val('');
-      });
-      
-    $('#Modal1').modal('toggle');
-
-    })*/
-    
 }
+
 // DELETE METODA
 
 const izbrisiAuto = (id) => {
@@ -178,96 +169,6 @@ function myFunction() {
       moreText.style.display = "inline";
     }
   }
-/* POST */
-
-/*fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars', {
-    method: "POST",
-    headers: {
-        "Content-type": "application/json" //Govori severu koji format podataka šaljemo
-    },
-    body: JSON.stringify(
-        {
-            "id": 7,
-            "name": "Audi",
-            "manufacturer": "Q7",
-            "imageUrl": "8990",
-            "price": 100000,
-            "year": 2020
-          }
-    )      
-})*/
-    
-/* 
-const postData = {
-    "id": 7,
-    "name": "Audi",
-    "manufacturer": "Q7",
-    "imageUrl": "8990",
-    "price": 100000,
-    "year": 2020
-};
-try {
-    const response = await fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars', {
-        method: "post",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(postData)        
-    });
-    if (!response.ok) {
-        const message = "Error with Status Code: " + response.status;
-        throw new Error(message);
-    }
-    const data = await response.json();
-    console.log(data);
-} catch (error) {
-    console.log("Error: " + err);
-}*/
-
-/*
-
-const mojaForma=document.getElementById("myform");
-mojaForma.addEventListener("submit",(e)=>{
-    e.preventDefault();
-    console.log("Unos je submitovan!");
-    const prvo = document.getElementById("id").value;
-    const drugo = document.getElementById("name").value;
-    const trece = document.getElementById("manufacturer").value;
-    const cetvrto = document.getElementById("imageUrl").value;
-    const peto = document.getElementById("price").value;
-    const sesto = document.getElementById("year").value;
-
-console.log(prvo, drugo, trece, cetvrto, peto, sesto);
-fetch('https://ptf-web-dizajn-2022.azurewebsites.net/api/Cars', {
-    method:'POST',
-    headers: {
-    'Content-Type': 'application/json'
-        },
-    body: JSON.stringify({
-     id: prvo,
-     name: drugo, 
-     manufacturer: trece,
-     imageUrl: cetvrto,
-     price: peto,
-     year: sesto
-         })
-         })
-         .then(res => {
-             if(!res.ok){
-                 throw 'ovo je error';
-            }
-             return res.json();
-     })
-         .then(data => console.log(data))
-         .catch(err => console.log(err))
-})
-
-*/
-
-//PUT
-
-
-// POČETNA STRANICA
 
 
 // PROMJENA POLOŽAJA SLIKE 
@@ -288,3 +189,4 @@ document.querySelector('.pocetna').onmouseleave = () => {
         ele.style.transform = `translateX(0px) translateY(0px)`;
     });
 }
+
