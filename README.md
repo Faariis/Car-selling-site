@@ -1,1 +1,3 @@
 # WebStranica
+
+(HTML, CSS, JavaScript)
